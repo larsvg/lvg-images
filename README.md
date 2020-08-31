@@ -8,10 +8,10 @@ Here's an example of how the package can be used:
 
 ```php
 foreach ($images as $image) {
-    new WebPProcessor($image, 400, 300);
-    new WebPProcessor($image, 800, 600);
-    new WebPProcessor($image, 1200, 900);
-    new JpgPngProcessor($image, 1200, 900);
+    new WebPProcessor($image, 512, 256);
+    new WebPProcessor($image, 768, 384);
+    new WebPProcessor($image, 1024, 512);
+    new JpgPngProcessor($image, 1024, 512);
 }
 ```
 
@@ -27,4 +27,19 @@ Publish configuration to your project
 
 ```bash
 php artisan vendor:publish --tag=lvgimages
+```
+
+Images are saved to the `public/image` directory. The fourth parameter can be optionally used to structurize the images in folders.
+
+As a result you get nice structurized responsive images, a use case could be the HTML picture tag.
+
+```html
+<picture>
+    <source srcset="{{ url('images/512x256.webp') }}" sizes="(max-width: 512px)" type="image/webp">
+    <source srcset="{{ url('images/768x512.webp') }}" sizes="(min-width: 512px) and (max-width: 768px)" type="image/webp">
+    <source srcset="{{ url('images/1024x512.webp') }}" sizes="(min-width: 768px) and (max-width: 1024px)" type="image/webp">
+    <source srcset="{{ url('images/1536x1024.webp') }}" sizes="(min-width: 1024px)" type="image/webp">
+    <source srcset="{{ url('images/1536x1024.jpg') }}" type="image/jpeg">
+    <img src="{{ url('images/1536x1024.jpg') }}" alt="Responsive image">
+</picture>
 ```
