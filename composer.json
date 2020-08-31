@@ -1,0 +1,29 @@
+{
+    "name": "larsvg/lvgimages",
+    "description": "Lvg Images",
+    "keywords": [""],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lars van Galen",
+            "email": "lars@vangalen.org"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "larsvg\\lvgimages\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.4",
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "larsvg\\lvgimages\\LvgImagesServiceProvider",
+                "Mckenziearts\\Notify\\LaravelNotifyServiceProvider",
+            ]
+        }
+    }
+}
