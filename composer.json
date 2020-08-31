@@ -17,11 +17,13 @@
     },
     "require": {
         "php": "^7.4",
+        "spatie/laravel-glide": "^3.5"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "larsvg\\lvgimages\\LvgImagesServiceProvider"
+                "larsvg\\lvgimages\\LvgImagesServiceProvider",
+                "Spatie\\Glide\\GlideServiceProvider"
             ]
         }
     }

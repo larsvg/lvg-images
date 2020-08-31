@@ -25,6 +25,12 @@ class LvgImagesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        dd('init');
+        if (app()->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/laravel-glide.php' => config_path('cms.php'),
+            ], 'lvgimages');
+
+            return;
+        }
     }
 }
