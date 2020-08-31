@@ -67,7 +67,7 @@ abstract class ImageProcessor
      */
     public function getImageUrl(): string
     {
-        return url($this->saveToFolder . '/' . $this->fileName);
+        return url($this->saveToFolder . $this->fileName);
     }
 
     /**
