@@ -21,8 +21,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "larsvg\\lvgimages\\LvgImagesServiceProvider",
-                "Mckenziearts\\Notify\\LaravelNotifyServiceProvider",
+                "larsvg\\lvgimages\\LvgImagesServiceProvider"
             ]
         }
     }
