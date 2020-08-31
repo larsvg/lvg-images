@@ -31,7 +31,7 @@ php artisan vendor:publish --tag=lvgimages
 
 Images are saved to the `public/image` directory. The fourth parameter can be optionally used to structurize the images in folders.
 
-As a result you get nice structurized responsive images, a use case could be the HTML picture tag.
+As a result you get nicely structurized responsive images, a use case could be the HTML picture tag.
 
 ```html
 <picture>
