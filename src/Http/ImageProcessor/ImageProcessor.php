@@ -15,7 +15,7 @@ abstract class ImageProcessor
     protected UploadedFile $image;
     protected ?int         $width;
     protected ?int         $height;
-    protected string       $targetFolder;
+    protected string       $saveToFolder;
     protected string       $originalImage;
 
     /**
@@ -24,17 +24,16 @@ abstract class ImageProcessor
      * @param UploadedFile $image
      * @param int|null     $width
      * @param int|null     $height
-     * @param string       $targetFolder
+     * @param string       $saveToFolder
      */
-    public function __construct(UploadedFile $image, int $width = null, int $height = null, string $targetFolder = '')
+    public function __construct(UploadedFile $image, int $width = null, int $height = null, string $saveToFolder = '')
     {
         $this->height       = $height;
         $this->width        = $width;
         $this->image        = $image;
-        $this->targetFolder = public_path('images') . $targetFolder;
+        $this->saveToFolder = public_path('images') . rtrim($saveToFolder, '/') . '/';
 
         $this->saveOriginalImage();
-
         $this->scaleImage();
     }
 
@@ -44,12 +43,29 @@ abstract class ImageProcessor
     private function saveOriginalImage(): string
     {
         $name = 'original.' . $this->image->clientExtension();
-        $this->image->move($this->targetFolder, $name);
-        $this->originalImage = $this->targetFolder . '/' . $name;
+        if (!file_exists($this->saveToFolder . $name)) {
+            $this->image->move($this->saveToFolder, $name);
+        }
+        $this->originalImage = $this->saveToFolder . $name;
 
         return $this->originalImage;
     }
 
-    abstract protected function scaleImage();
+    /**
+     * @return string
+     */
+    protected function scaleOriginal(): string
+    {
+        $name = ($this->width ?? '-') . 'x' . ($this->height ?? '-') . '.' . $this->image->clientExtension();
+
+        return GlideImage::create($this->originalImage)
+            ->modify(['w' => $this->width])
+            ->save($this->saveToFolder . $name);
+    }
+
+    /**
+     * @return string
+     */
+    abstract protected function scaleImage(): string;
 
 }

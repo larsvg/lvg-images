@@ -7,13 +7,9 @@ use Spatie\Glide\GlideImage;
 class JpgPngProcessor extends ImageProcessor
 {
 
-    protected function scaleImage()
+    protected function scaleImage(): string
     {
-        $name = ($this->width ?? '-') . 'x' . ($this->height ?? '-') . '.' . $this->image->clientExtension();
-
-        return GlideImage::create($this->originalImage)
-            ->modify(['w' => $this->width])
-            ->save($this->targetFolder . '/' . $name);
+        return $this->scaleOriginal();
     }
 
 }
