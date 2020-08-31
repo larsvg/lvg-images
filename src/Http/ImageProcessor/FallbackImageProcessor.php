@@ -2,9 +2,7 @@
 
 namespace larsvg\lvgimages\Http\ImageProcessor;
 
-use Spatie\Glide\GlideImage;
-
-class JpgPngProcessor extends ImageProcessor
+class FallbackImageProcessor extends ImageProcessor
 {
 
     /**

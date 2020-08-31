@@ -7,12 +7,11 @@ The images can be scaled and converted to WebP.
 Here's an example of how the package can be used:
 
 ```php
-foreach ($images as $image) {
-    new WebPProcessor($image, 512, 256);
-    new WebPProcessor($image, 768, 384);
-    new WebPProcessor($image, 1024, 512);
-    new JpgPngProcessor($image, 1024, 512);
-}
+new WebPProcessor($image, 512, 256);
+new WebPProcessor($image, 768, 384);
+new WebPProcessor($image, 1024, 512);
+new WebPProcessor($image, 1536, 1024);
+new FallbackImageProcessor($image, 1536, 1024);
 ```
 
 ## Installation
