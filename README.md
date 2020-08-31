@@ -1,4 +1,4 @@
-# lvgimages
+# lvg-images
 Easily convert images to specific formats and sizes in your Laravel application.
 
 This package uploads an image based on a `Illuminate\Http\UploadedFile` instance to your public folder.
