@@ -14,9 +14,9 @@ class WebPProcessor extends ImageProcessor
      */
     protected function scaleImage(): string
     {
-        $scaledImage = $this->scaleOriginal();
-        $name        = ($this->width ?? '-') . 'x' . ($this->height ?? '-') . '.' . 'webp';
-        $destination = $this->rootPath . $name;
+        $scaledImage    = $this->scaleOriginal();
+        $this->fileName = ($this->width ?? '-') . 'x' . ($this->height ?? '-') . '.' . 'webp';
+        $destination    = $this->rootPath . $this->fileName;
         WebPConvert::convert($scaledImage, $destination, []);
         return $destination;
     }
