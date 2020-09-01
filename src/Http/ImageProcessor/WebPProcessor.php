@@ -2,7 +2,6 @@
 
 namespace larsvg\lvgimages\Http\ImageProcessor;
 
-
 use WebPConvert\Convert\Exceptions\ConversionFailedException;
 use WebPConvert\WebPConvert;
 
